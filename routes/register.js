@@ -3,42 +3,28 @@ const bcrypt = require('bcryptjs')
 const User = require('../models/User')
 // const {authSchema} = require("../helpers/validation_schema")
 
-
-router.post('/',async(req,res)=>{
-
-const emailExist = await User.findOne({email: req.body.email});
-if(emailExist) return res.status(400).send('Email already exists');
-
-
-const nameExist = await User.findOne({name: req.body.name});
-if(nameExist) return res.status(400).send('Name already exists');
-
-//Hash password
-const salt = await bcrypt.genSalt(10);
-const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
-
-//Create a new user
-    const user = new User({
-        name:req.body.name,
-        email:req.body.email,
-        password:hashedPassword,
-        role:req.body.role
-    });
-    try{
-        const result = await(req.body)
-        console.log(result)
-        //Getting the user and saving
-         const savedUser = await user.save();
-        res.send(savedUser);
-    }catch(err){
-        res.status(400).send(err);
+router.post("/", async (req, res, next) => {
+try {
+    const foundUser =  await User.findOne({ email: req.body.email })
+    console.log('user found')
+    if (foundUser != null){
+        return res.status(400).send('Email already exists');
     }
-   
+    //Hash password
+    const newUser = new User(req.body)
+   const salt = await bcrypt.genSalt(10);
+   newUser.password = await bcrypt.hash(req.body.pass, salt);
+   const savedUser = await newUser.save();
+   if(savedUser){
+       return res.status(201).send('User created')
+   }
+} catch (error) {
+    // res.status(500).send('Post Unsucessful')
+    console.log(error)
+}
 
-});
+})
 
 
 
-
-module.exports = router ;
+module.exports = router;

@@ -17,12 +17,14 @@ router.post('/', checkAuth, async(req,res)=>{
         });
         try{
             const result = await(req.body)
+            // console.log('here')
             console.log(result)
             //Getting the parcel and saving
              const savedUser = await user.save();
             res.send(savedUser);
         }catch(err){
-            res.status(400).json("Unable to create parcel");
+            console.log(err)
+            // res.status(400).json("Unable to create parcel");
         }
        
     });

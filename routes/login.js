@@ -13,7 +13,7 @@ router.post('/', (req,res,next)=> {
                 message: "Auth failed"
             })
         }
-bcrypt.compare(req.body.password, user[0].password, (err, result)=>{
+bcrypt.compare(req.body.pass, user[0].password, (err, result)=>{
     if (err) {
         return res.status(401).json({
             message: "Auth failed"
@@ -26,7 +26,7 @@ bcrypt.compare(req.body.password, user[0].password, (err, result)=>{
         }, 
         process.env.JWT_KEY,
         {
-            expiresIn: "1h"
+            expiresIn: "72h"
         }
         );
 return res.status(200).json({

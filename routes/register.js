@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs')
 const User = require('../models/User')
-// const {authSchema} = require("../helpers/validation_schema")
+
 
 router.post("/", async (req, res, next) => {
 try {

@@ -2,7 +2,7 @@
 This is an api which allows users to create an account, login and create an order for a parcel.
 
 
-//To Login
+To Login
 email: "don@gmail.com"
 password: "don"
 

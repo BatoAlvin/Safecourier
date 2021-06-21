@@ -1,5 +1,8 @@
 # Safecourier 
 This is an api which allows users to create an account, login and create an order for a parcel.
+//To Login
+email: "don@gmail.com"
+password: "don"
 
 ## Tech Stack <br>
 - Node.js
@@ -57,9 +60,9 @@ Signs in a user into the Application.
 
 ```json
 {
-  "name": "test",
-  "email": "test@gmail.com",
-  "password": "password"
+  "name": "don",
+  "email": "don@gmail.com",
+  "password": "don"
 }
 
 - **Request Headers**
@@ -101,8 +104,8 @@ Logs in a single user in the application.
 
 ```json
 {
-  "username": "test",
-  "password": "password"
+  "email": "don@gmail.com",
+  "password": "don"
 }
 ```
 
@@ -112,7 +115,7 @@ Logs in a single user in the application.
 |`/home`|GET|`None`|string
 
 ##Response
-Hello from Toyota
+SafeCourier
     
 ## Create an order
 

@@ -116,7 +116,7 @@ Hello from Toyota
     
 ## Create an order
 
-Adds a question to the database.
+Creates an order to the database.
 
 |**Endpoint**|**Method**|**Params**|**Data-type**|
 |---|---|---|---|
@@ -129,7 +129,7 @@ Views the order.
 |---|---|---|---|
 |`/api/v1/parcels/users`|GET|`required`|string|
 
-## Get all questions
+## Get Orders
 
 Gets specific order from the database.
 
